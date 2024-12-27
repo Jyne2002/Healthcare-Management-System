@@ -1,6 +1,7 @@
 package View;
 import Model.Doctor;
 import Controller.DoctorController;
+import Home.Home;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -49,7 +50,7 @@ public class Doctorview extends javax.swing.JFrame {
         HomeBtn = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        Home = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
@@ -168,8 +169,13 @@ public class Doctorview extends javax.swing.JFrame {
         jButton3.setBackground(new java.awt.Color(255, 255, 102));
         jButton3.setText("jButton1");
 
-        jButton4.setBackground(new java.awt.Color(255, 255, 102));
-        jButton4.setText("Home");
+        Home.setBackground(new java.awt.Color(255, 255, 102));
+        Home.setText("Home");
+        Home.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HomeActionPerformed(evt);
+            }
+        });
 
         jButton5.setBackground(new java.awt.Color(255, 255, 102));
         jButton5.setText("jButton1");
@@ -197,7 +203,7 @@ public class Doctorview extends javax.swing.JFrame {
                     .addComponent(jButton3)
                     .addComponent(jButton2)
                     .addComponent(jButton6)
-                    .addComponent(jButton4))
+                    .addComponent(Home))
                 .addGap(24, 24, 24))
             .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -206,7 +212,7 @@ public class Doctorview extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Home, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -309,6 +315,15 @@ public class Doctorview extends javax.swing.JFrame {
     }
     }//GEN-LAST:event_RemovebuttonActionPerformed
 
+    private void HomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeActionPerformed
+         // Close the current window (PharmacyView)
+    this.dispose();
+    
+    // Create and show the Home window
+    Home homeFrame = new Home();  // Make sure Home.java is properly defined
+    homeFrame.setVisible(true);// TODO add your handling code here:
+    }//GEN-LAST:event_HomeActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -346,6 +361,7 @@ public class Doctorview extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Addbutton;
+    private javax.swing.JButton Home;
     private javax.swing.JButton HomeBtn;
     private javax.swing.JButton Removebutton;
     private javax.swing.JTable Table;
@@ -356,7 +372,6 @@ public class Doctorview extends javax.swing.JFrame {
     private javax.swing.JTextField headerTextField;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
