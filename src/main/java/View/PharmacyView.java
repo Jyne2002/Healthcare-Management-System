@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package View;
 
 import Controller.PharmacyController;
@@ -153,7 +149,7 @@ public class PharmacyView extends javax.swing.JFrame {
         UpdateBtn.setBackground(new java.awt.Color(204, 204, 255));
         UpdateBtn.setText("Update");
 
-        DeleteBtn.setBackground(new java.awt.Color(255, 51, 51));
+        DeleteBtn.setBackground(new java.awt.Color(153, 51, 0));
         DeleteBtn.setText("Delete");
 
         javax.swing.GroupLayout ButtonsLayout = new javax.swing.GroupLayout(Buttons);

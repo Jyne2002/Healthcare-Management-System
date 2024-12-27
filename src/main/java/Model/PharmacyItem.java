@@ -15,7 +15,7 @@ public class PharmacyItem {
         this.expDate = expDate;
     }
 
-    // Getters and Setters
+    // Getter and Setters
     public int getId() {
         return id;
     }

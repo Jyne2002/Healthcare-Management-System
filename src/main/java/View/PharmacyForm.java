@@ -83,7 +83,7 @@ public class PharmacyForm extends JDialog {
     }
 
     private boolean validateForm() {
-    // Check if any field is empty
+
     if (idField.getText().trim().isEmpty()) {
         showError("ID cannot be empty.");
         return false;
