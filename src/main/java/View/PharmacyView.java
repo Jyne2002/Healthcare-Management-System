@@ -153,7 +153,7 @@ public class PharmacyView extends javax.swing.JFrame {
         UpdateBtn.setBackground(new java.awt.Color(204, 204, 255));
         UpdateBtn.setText("Update");
 
-        DeleteBtn.setBackground(new java.awt.Color(255, 51, 51));
+        DeleteBtn.setBackground(new java.awt.Color(204, 51, 0));
         DeleteBtn.setText("Delete");
 
         javax.swing.GroupLayout ButtonsLayout = new javax.swing.GroupLayout(Buttons);
