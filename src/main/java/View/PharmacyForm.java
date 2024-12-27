@@ -1,4 +1,4 @@
-
+package View;
 
 import Model.PharmacyItem;
 import javax.swing.*;

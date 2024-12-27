@@ -1,4 +1,4 @@
-
+package Model;
 
 public class PharmacyItem {
     private int id;
