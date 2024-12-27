@@ -255,5 +255,5 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton PharmacyBtn;
     private javax.swing.JButton ReportsBtn;
     private javax.swing.JLabel RightTxt;
-    // End of variables declaration//GEN-END:variables
+
 }
