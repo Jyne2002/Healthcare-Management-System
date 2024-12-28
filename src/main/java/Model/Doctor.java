@@ -5,22 +5,22 @@ public class Doctor {
     private String name;
     private String specialization;
     private String availability;
-    private String contactNumber;
+    private double doctorFee;
 
-    public Doctor(int id, String name, String specialization, String availability, String contactNumber) {
+    public Doctor(int id, String name, String specialization, String availability, double doctorFee) {
         this.id = id;
         this.name = name;
         this.specialization = specialization;
         this.availability = availability;
-        this.contactNumber = contactNumber;
+        this.doctorFee = doctorFee;
     }
 
     // Constructor without ID for new entries
-    public Doctor(String name, String specialization, String availability, String contactNumber) {
+    public Doctor(String name, String specialization, String availability, double doctorFee) {
         this.name = name;
         this.specialization = specialization;
         this.availability = availability;
-        this.contactNumber = contactNumber;
+        this.doctorFee = doctorFee;
     }
 
     // Getters and Setters
@@ -56,11 +56,11 @@ public class Doctor {
         this.availability = availability;
     }
 
-    public String getContactNumber() {
-        return contactNumber;
+    public double getDoctorFee() {
+        return doctorFee;
     }
 
-    public void setContactNumber(String contactNumber) {
-        this.contactNumber = contactNumber;
+    public void setDoctorFee(double doctorFee) {
+        this.doctorFee = doctorFee;
     }
 }
