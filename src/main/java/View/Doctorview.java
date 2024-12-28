@@ -303,6 +303,7 @@ public class Doctorview extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Select a doctor to update.");
         }
     }//GEN-LAST:event_UpdatebuttonActionPerformed
+    //update
 
     private void RemovebuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemovebuttonActionPerformed
         int selectedRow = Table.getSelectedRow();
