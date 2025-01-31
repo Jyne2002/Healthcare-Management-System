@@ -15,14 +15,14 @@ public class DoctorController {
         try (Connection conn = DatabaseConnection.getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery("SELECT * FROM doctors")) {
-            
+
             while (rs.next()) {
                 doctors.add(new Doctor(
-                    rs.getInt("id"),
-                    rs.getString("name"),
-                    rs.getString("specialization"),
-                    rs.getString("availability"),
-                    rs.getString("contact_number")
+                        rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getString("specialization"),
+                        rs.getString("availability"),
+                        rs.getDouble("doctor_fee")
                 ));
             }
         } catch (SQLException e) {
@@ -33,15 +33,15 @@ public class DoctorController {
 
     // Add a doctor with a specific ID
     public void addDoctor(Doctor doctor) {
-        String query = "INSERT INTO doctors (id, name, specialization, availability, contact_number) VALUES (?, ?, ?, ?, ?)";
+        String query = "INSERT INTO doctors (id, name, specialization, availability, doctor_fee) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
-            
+
             pstmt.setInt(1, doctor.getId());
             pstmt.setString(2, doctor.getName());
             pstmt.setString(3, doctor.getSpecialization());
             pstmt.setString(4, doctor.getAvailability());
-            pstmt.setString(5, doctor.getContactNumber());
+            pstmt.setDouble(5, doctor.getDoctorFee());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -50,14 +50,14 @@ public class DoctorController {
 
     // Update a doctor's details
     public void updateDoctor(int id, Doctor doctor) {
-        String query = "UPDATE doctors SET name = ?, specialization = ?, availability = ?, contact_number = ? WHERE id = ?";
+        String query = "UPDATE doctors SET name = ?, specialization = ?, availability = ?, doctor_fee = ? WHERE id = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
-            
+
             pstmt.setString(1, doctor.getName());
             pstmt.setString(2, doctor.getSpecialization());
             pstmt.setString(3, doctor.getAvailability());
-            pstmt.setString(4, doctor.getContactNumber());
+            pstmt.setDouble(4, doctor.getDoctorFee());
             pstmt.setInt(5, id);
             pstmt.executeUpdate();
         } catch (SQLException e) {
@@ -70,7 +70,7 @@ public class DoctorController {
         String query = "DELETE FROM doctors WHERE id = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
-            
+
             pstmt.setInt(1, id);
             pstmt.executeUpdate();
         } catch (SQLException e) {

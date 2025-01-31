@@ -10,7 +10,7 @@ public class DoctorFormDialog extends JDialog {
     private JTextField nameField;
     private JTextField specializationField;
     private JTextField availabilityField;
-    private JTextField contactNumberField;
+    private JTextField doctorFeeField;
     private boolean isSubmitted;
 
     public DoctorFormDialog(Frame parent, String title, String[] initialData) {
@@ -33,9 +33,9 @@ public class DoctorFormDialog extends JDialog {
         availabilityField = new JTextField();
         add(availabilityField);
 
-        add(new JLabel("Contact Number:"));
-        contactNumberField = new JTextField();
-        add(contactNumberField);
+        add(new JLabel("Doctor Fee:"));
+        doctorFeeField = new JTextField();
+        add(doctorFeeField);
 
         JButton okButton = new JButton("OK");
         JButton cancelButton = new JButton("Cancel");
@@ -48,7 +48,7 @@ public class DoctorFormDialog extends JDialog {
             nameField.setText(initialData[1]);
             specializationField.setText(initialData[2]);
             availabilityField.setText(initialData[3]);
-            contactNumberField.setText(initialData[4]);
+            doctorFeeField.setText(initialData[4]);
         }
 
         okButton.addActionListener(e -> {
@@ -73,11 +73,11 @@ public class DoctorFormDialog extends JDialog {
 
     public String[] getFormData() {
         return new String[]{
-            idField.getText(),
-            nameField.getText(),
-            specializationField.getText(),
-            availabilityField.getText(),
-            contactNumberField.getText()
+                idField.getText(),
+                nameField.getText(),
+                specializationField.getText(),
+                availabilityField.getText(),
+                doctorFeeField.getText()
         };
     }
 
@@ -108,12 +108,14 @@ public class DoctorFormDialog extends JDialog {
             return false;
         }
 
-        if (contactNumberField.getText().trim().isEmpty()) {
-            showMessage("Contact Number cannot be empty");
+        if (doctorFeeField.getText().trim().isEmpty()) {
+            showMessage("Doctor Fee cannot be empty");
             return false;
         }
-        if (!contactNumberField.getText().trim().matches("\\d{10}")) {
-            showMessage("Contact Number must be a valid 10-digit number");
+        try {
+            Double.parseDouble(doctorFeeField.getText().trim());
+        } catch (NumberFormatException e) {
+            showMessage("Doctor Fee must be a valid number");
             return false;
         }
 
