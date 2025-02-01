@@ -1,9 +1,9 @@
 package Home;
 
+import Model.Patient;
+import View.*;
 import View.MainUI;
-import View.PharmacyView;
-import View.Doctorview;
-import View.MainUI;
+import main.PatientMain;
 
 public class Home extends javax.swing.JFrame {
 
@@ -73,6 +73,11 @@ public class Home extends javax.swing.JFrame {
         AppoinmentBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         AppoinmentBtn.setForeground(new java.awt.Color(255, 255, 255));
         AppoinmentBtn.setText("Book Appoinments");
+        AppoinmentBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AppoinmentBtnActionPerformed(evt);
+            }
+        });
 
         ReportsBtn.setBackground(new java.awt.Color(0, 103, 206));
         ReportsBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -240,12 +245,37 @@ public class Home extends javax.swing.JFrame {
         // Or you can dispose of it to free up resources
         // this.dispose();//Hi
     }//GEN-LAST:event_DoctorBtnActionPerformed
+    private void AppoinmentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoctorBtnActionPerformed
+        // Create an instance of DoctorView
+        AppointmentBookingForm app = new AppointmentBookingForm();
+
+        // Set DoctorView visible
+        app.setVisible(true);
+
+        // Optionally close the current window (Home)
+        this.setVisible(true); // This hides the current window
+        // Or you can dispose of it to free up resources
+        // this.dispose();
+    }//GEN-LAST:event_DoctorBtnActionPerformed
 
 
-    private void PatientBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatientBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_PatientBtnActionPerformed
+    private void PatientBtnActionPerformed(java.awt.event.ActionEvent evt) {
+        // Use SwingUtilities to ensure this runs on the EDT
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                // Create an instance of PatientMain
+                PatientMain patientMain = new PatientMain();
 
+                // Call the main method to display the PatientView
+                patientMain.main(new String[0]);
+
+                // Optionally close the current window (Home)
+                Home.this.setVisible(true); // This hides the current window
+                // Or you can dispose of it to free up resources
+                // Home.this.dispose();
+            }
+        });
+    }
     /**
      * @param args the command line arguments
      */

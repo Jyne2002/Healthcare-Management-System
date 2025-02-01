@@ -327,9 +327,14 @@ public class PharmacyView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_PharmacyBtnActionPerformed
 
-    private void AppoinmentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AppoinmentBtnActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AppoinmentBtnActionPerformed
+    private void AppoinmentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomebtnActionPerformed
+        // Close the current window (PharmacyView)
+
+
+        // Create and show the Home window
+        AppointmentBookingForm app = new AppointmentBookingForm();  // Make sure Home.java is properly defined
+        app.setVisible(true);
+    }//GEN-LAST:event_HomebtnActionPerformed
 
     private void ReportsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReportsBtnActionPerformed
         // TODO add your handling code here:
