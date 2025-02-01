@@ -1,6 +1,9 @@
 package Home;
 
+import View.MainUI;
 import View.PharmacyView;
+import View.Doctorview;
+import View.MainUI;
 
 public class Home extends javax.swing.JFrame {
 
@@ -40,6 +43,11 @@ public class Home extends javax.swing.JFrame {
         DoctorBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         DoctorBtn.setForeground(new java.awt.Color(255, 255, 255));
         DoctorBtn.setText("Manage Doctor Shedules");
+        DoctorBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DoctorBtnActionPerformed(evt);
+         }
+});
 
         PatientBtn.setBackground(new java.awt.Color(0, 103, 206));
         PatientBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -70,6 +78,11 @@ public class Home extends javax.swing.JFrame {
         ReportsBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         ReportsBtn.setForeground(new java.awt.Color(255, 255, 255));
         ReportsBtn.setText("Monthly Reports");
+        ReportsBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReportsBtnActionPerformed(evt);
+            }
+        });
 
         NotiPatientBtn.setBackground(new java.awt.Color(0, 103, 206));
         NotiPatientBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -201,6 +214,33 @@ public class Home extends javax.swing.JFrame {
     // Or you can dispose it to free up resources
     // this.dispose();
     }//GEN-LAST:event_PharmacyBtnActionPerformed
+
+    private void DoctorBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoctorBtnActionPerformed
+        // Create an instance of DoctorView
+        Doctorview doctorView = new Doctorview();
+
+        // Set DoctorView visible
+        doctorView.setVisible(true);
+
+        // Optionally close the current window (Home)
+        this.setVisible(false); // This hides the current window
+        // Or you can dispose of it to free up resources
+        // this.dispose();
+    }//GEN-LAST:event_DoctorBtnActionPerformed
+
+    private void ReportsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoctorBtnActionPerformed
+        // Create an instance of DoctorView
+        MainUI mainui = new MainUI();
+
+        // Set DoctorView visible
+        mainui.setVisible(true);
+
+        // Optionally close the current window (Home)
+        this.setVisible(false); // This hides the current window
+        // Or you can dispose of it to free up resources
+        // this.dispose();
+    }//GEN-LAST:event_DoctorBtnActionPerformed
+
 
     private void PatientBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatientBtnActionPerformed
         // TODO add your handling code here:
