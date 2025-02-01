@@ -5,7 +5,8 @@ import Database.DatabaseConnection;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.Statement; //import classes
+
 
 public class LowStockNotifier {
     public static void checkLowStock() {
