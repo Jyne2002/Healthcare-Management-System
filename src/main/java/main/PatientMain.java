@@ -10,7 +10,6 @@ public class PatientMain {
         new PatientController(view, dao);
         view.setVisible(true);
     }
-//eifepgpdgnss
-
+//eifepgpdgnss99
 
 }
