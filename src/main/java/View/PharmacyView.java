@@ -6,6 +6,7 @@ import Home.Home;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
 
+
 public class PharmacyView extends javax.swing.JFrame {
     private PharmacyController controller = new PharmacyController();
     /**
@@ -236,10 +237,16 @@ public class PharmacyView extends javax.swing.JFrame {
         NotiPatientBtn.setBackground(new java.awt.Color(0, 103, 206));
         NotiPatientBtn.setForeground(new java.awt.Color(204, 255, 255));
         NotiPatientBtn.setText("Notify Pharmacists");
+        NotiPatientBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NotiPatientBtnActionPerformed(evt);
+            }
+        });
 
         NotiPharmacistsBtn.setBackground(new java.awt.Color(0, 103, 206));
         NotiPharmacistsBtn.setForeground(new java.awt.Color(204, 255, 255));
         NotiPharmacistsBtn.setText("Notify Patient");
+
 
         javax.swing.GroupLayout SidebarLayout = new javax.swing.GroupLayout(Sidebar);
         Sidebar.setLayout(SidebarLayout);
@@ -336,9 +343,19 @@ public class PharmacyView extends javax.swing.JFrame {
         app.setVisible(true);
     }//GEN-LAST:event_HomebtnActionPerformed
 
+
     private void ReportsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ReportsBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ReportsBtnActionPerformed
+
+
+    private void NotiPatientBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NotiPatientBtnActionPerformed
+        // Create an instance of LowStockNotificationView
+        LowStockNotificationView lowStockNotificationView = new LowStockNotificationView();
+
+        // Make the LowStockNotificationView visible
+        lowStockNotificationView.setVisible(true);
+    }//GEN-LAST:event_NotiPatientBtnActionPerformed
 
     private void SearchBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchBoxActionPerformed
        // Trigger the search functionality when "Enter" is pressed in the SearchBox
