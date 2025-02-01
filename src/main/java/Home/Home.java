@@ -238,7 +238,7 @@ public class Home extends javax.swing.JFrame {
         // Optionally close the current window (Home)
         this.setVisible(false); // This hides the current window
         // Or you can dispose of it to free up resources
-        // this.dispose();
+        // this.dispose();//Hi
     }//GEN-LAST:event_DoctorBtnActionPerformed
 
 
