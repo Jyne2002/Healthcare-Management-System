@@ -32,6 +32,7 @@ public class AppointmentBookingForm extends JFrame {
         containerPanel.setBackground(new Color(240, 240, 240));  // Light gray background for the window
         containerPanel.add(formPanel);
 //appointment
+        //appointments
         // Set JFrame properties
         add(containerPanel, BorderLayout.CENTER);
         setSize(600, 600);  // Increase size to make the form bigger
