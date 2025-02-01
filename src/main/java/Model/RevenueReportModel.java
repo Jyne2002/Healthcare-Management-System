@@ -14,7 +14,7 @@ public class RevenueReportModel {
 
         try (Connection conn = DatabaseConnection.getConnection()) {
             // Get total income from appointments
-            String feesQuery = "SELECT SUM(fees) FROM appointments WHERE MONTH(appointment_date) = ? AND YEAR(appointment_date) = ?";
+            String feesQuery = "SELECT SUM(fees) FROM appointment WHERE MONTH(appointment_date) = ? AND YEAR(appointment_date) = ?";
             try (PreparedStatement stmt = conn.prepareStatement(feesQuery)) {
                 stmt.setInt(1, month);
                 stmt.setInt(2, year);
