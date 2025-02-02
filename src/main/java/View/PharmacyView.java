@@ -253,7 +253,7 @@ public class PharmacyView extends javax.swing.JFrame {
 
         NotiPharmacistsBtn.setBackground(new java.awt.Color(0, 103, 206));
         NotiPharmacistsBtn.setForeground(new java.awt.Color(204, 255, 255));
-        NotiPharmacistsBtn.setText("Notify Patient");
+        NotiPharmacistsBtn.setText("Booking Details");
         NotiPharmacistsBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NotiPharmacistsBtnActionPerformed(evt);

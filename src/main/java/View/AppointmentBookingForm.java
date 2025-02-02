@@ -2,6 +2,7 @@ package View;
 
 import Database.DatabaseConnection;
 import Home.Home;
+import Utils.EmailUtil;
 
 import javax.swing.*;
 import java.awt.*;
@@ -193,7 +194,6 @@ public class AppointmentBookingForm extends JFrame {
     }
 
 
-    // Book an appointment using selected doctor and patient and other form fields
     private void bookAppointment() {
         try (Connection conn = DatabaseConnection.getConnection()) {
             String query = "INSERT INTO appointment (patient_id, doctor_id, appointment_date, appointment_time, fees) VALUES (?, ?, ?, ?, ?)";
@@ -206,7 +206,16 @@ public class AppointmentBookingForm extends JFrame {
 
             // Convert the text fields for Date and Time into Date and Time objects
             java.sql.Date date = java.sql.Date.valueOf(tfDate.getText());  // Use java.sql.Date
-            java.sql.Time time = java.sql.Time.valueOf(tfTime.getText() + ":00");  // Use java.sql.Time and append ":00" for seconds
+
+            // Fix: Append ":00" to the time string to make it HH:MM:SS
+            String timeString = tfTime.getText();
+            if (!timeString.contains(":")) {
+                throw new IllegalArgumentException("Invalid time format. Expected HH:MM.");
+            }
+            if (timeString.split(":").length == 2) {
+                timeString += ":00";  // Append seconds if missing
+            }
+            java.sql.Time time = java.sql.Time.valueOf(timeString);  // Use java.sql.Time
 
             // Get the patient_id based on the patient name
             int patientId = getPatientIdByName(patientName);
@@ -230,12 +239,41 @@ public class AppointmentBookingForm extends JFrame {
             int result = statement.executeUpdate();
             if (result > 0) {
                 JOptionPane.showMessageDialog(this, "Appointment booked successfully.");
+
+                // Send email to the patient
+                String patientEmail = getPatientEmailById(patientId);
+                if (patientEmail != null) {
+                    String subject = "Appointment Confirmation";
+                    String body = "Dear " + patientName + ",\n\nYour appointment with Dr. " + doctorName + " on " + date + " at " + time + " has been confirmed.\n\nThank you!";
+                    EmailUtil.sendEmail(patientEmail, subject, body);
+                } else {
+                    JOptionPane.showMessageDialog(this, "Patient email not found.");
+                }
             } else {
                 JOptionPane.showMessageDialog(this, "Error booking appointment.");
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(this, "Error: " + ex.getMessage());
+        } catch (IllegalArgumentException ex) {
+            JOptionPane.showMessageDialog(this, "Invalid time format. Please enter time in HH:MM format.");
         }
+    }
+
+    // Method to get patient email by ID
+    private String getPatientEmailById(int patientId) {
+        try (Connection conn = DatabaseConnection.getConnection()) {
+            String query = "SELECT email FROM patient_records WHERE id = ?";  // Assuming you have an email column in patient_records table
+            PreparedStatement statement = conn.prepareStatement(query);
+            statement.setInt(1, patientId);
+            ResultSet rs = statement.executeQuery();
+
+            if (rs.next()) {
+                return rs.getString("email");
+            }
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(this, "Error fetching patient email: " + ex.getMessage());
+        }
+        return null;  // Return null if email is not found
     }
 
     // Get the patient_id based on the patient name

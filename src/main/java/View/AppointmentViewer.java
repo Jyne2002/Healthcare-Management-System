@@ -12,12 +12,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class AppointmentViewer extends JFrame {
+public class AppointmentViewer extends JFrame { // Extend JFrame
 
-    private DefaultTableModel tableModel;
-    private JTable table;
-
-    public AppointmentViewer(int patientId) {
+    public AppointmentViewer(int patientId) { // Constructor that accepts patientId
         // Database connection details
         String url = "jdbc:mysql://localhost:3306/medicare_plus?useSSL=false";
         String user = "root";
@@ -27,7 +24,7 @@ public class AppointmentViewer extends JFrame {
         String query = "SELECT patient_id, doctor_id, appointment_date, appointment_time, fees FROM appointment WHERE patient_id = ?";
 
         // Create a table model to hold the data
-        tableModel = new DefaultTableModel();
+        DefaultTableModel tableModel = new DefaultTableModel();
         tableModel.addColumn("Patient ID");
         tableModel.addColumn("Doctor ID");
         tableModel.addColumn("Appointment Date");
@@ -37,7 +34,7 @@ public class AppointmentViewer extends JFrame {
         try (Connection connection = DriverManager.getConnection(url, user, password);
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
-            // Set the patient_id parameter dynamically
+            // Set the patient_id parameter
             preparedStatement.setInt(1, patientId);
 
             // Execute the query
@@ -45,28 +42,30 @@ public class AppointmentViewer extends JFrame {
 
             // Process the result set and add rows to the table model
             while (resultSet.next()) {
-                int patientIdFromDB = resultSet.getInt("patient_id");
+                int patientIdResult = resultSet.getInt("patient_id");
                 int doctorId = resultSet.getInt("doctor_id");
                 String appointmentDate = resultSet.getString("appointment_date");
                 String appointmentTime = resultSet.getString("appointment_time");
                 double fees = resultSet.getDouble("fees");
 
                 // Add a row to the table model
-                tableModel.addRow(new Object[]{patientIdFromDB, doctorId, appointmentDate, appointmentTime, fees});
+                tableModel.addRow(new Object[]{patientIdResult, doctorId, appointmentDate, appointmentTime, fees});
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-        // Set up JFrame properties
+        // Set up the JFrame
         setTitle("Appointment Details");
-        setSize(600, 400);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setLocationRelativeTo(null); // Center the window
+        setSize(600, 400);
+        setLocationRelativeTo(null); // Center the frame
 
         // Create a JTable with the table model
-        table = new JTable(tableModel);
+        JTable table = new JTable(tableModel);
+
+        // Add the table to a JScrollPane for scrolling
         JScrollPane scrollPane = new JScrollPane(table);
         add(scrollPane, BorderLayout.CENTER);
 
@@ -75,8 +74,11 @@ public class AppointmentViewer extends JFrame {
         backToHomeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose(); // Close current window
-                Home.main(new String[]{}); // Open Home window
+                // Close the current window
+                dispose();
+
+                // Open the Home.java window
+                Home.main(new String[]{});
             }
         });
 
@@ -86,13 +88,11 @@ public class AppointmentViewer extends JFrame {
         add(buttonPanel, BorderLayout.SOUTH);
     }
 
-    public AppointmentViewer() {
-
-    }
-
     public static void main(String[] args) {
+        // Example usage
         SwingUtilities.invokeLater(() -> {
-            new AppointmentViewer(1).setVisible(true); // Example: Display appointments for patient ID 1
+            AppointmentViewer viewer = new AppointmentViewer(1); // Pass a patient ID
+            viewer.setVisible(true);
         });
     }
 }

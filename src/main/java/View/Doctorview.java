@@ -213,7 +213,7 @@ public class Doctorview extends javax.swing.JFrame {
         });
 
         jButton8.setBackground(new java.awt.Color(255, 255, 102));
-        jButton8.setText("Notify Patient");
+        jButton8.setText("Booking details");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NotiPatientsBtnActionPerformed(evt);

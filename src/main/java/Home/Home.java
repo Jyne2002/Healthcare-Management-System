@@ -92,7 +92,7 @@ public class Home extends javax.swing.JFrame {
         NotiPatientBtn.setBackground(new java.awt.Color(0, 103, 206));
         NotiPatientBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         NotiPatientBtn.setForeground(new java.awt.Color(255, 255, 255));
-        NotiPatientBtn.setText("Notify Patients");
+        NotiPatientBtn.setText("Booking Details");
         NotiPatientBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NotiPatientBtnActionPerformed(evt);
@@ -102,7 +102,7 @@ public class Home extends javax.swing.JFrame {
         NotiPharmacistsBtn.setBackground(new java.awt.Color(0, 103, 206));
         NotiPharmacistsBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         NotiPharmacistsBtn.setForeground(new java.awt.Color(255, 255, 255));
-        NotiPharmacistsBtn.setText("Notify Pharmacists");
+        NotiPharmacistsBtn.setText("Notify Pharmacist");
         NotiPharmacistsBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NotiPharmacistsBtnActionPerformed(evt);
