@@ -22,7 +22,7 @@ public class PatientVisitReport {
 
     public PatientVisitReport() {
         // Initialize table model explicitly
-        DefaultTableModel tableModel = new DefaultTableModel(new String[]{"Name", "Age", "Address", "Contact", "Date Registered"}, 0);
+        DefaultTableModel tableModel = new DefaultTableModel(new String[]{"Name", "Age", "Email", "Contact", "Date Registered"}, 0);
         reportTable = new JTable(tableModel);
 
         // Attach table to the scroll pane
@@ -68,7 +68,7 @@ public class PatientVisitReport {
     }
 
     private List<Object[]> fetchPatientDataFromDatabase(int month, int year) {
-        String query = "SELECT Name, Age, Address, Contact, DateAdded FROM patient_records WHERE MONTH(DateAdded) = ? AND YEAR(DateAdded) = ?";
+        String query = "SELECT Name, Age, Email, Contact, DateAdded FROM patient_records WHERE MONTH(DateAdded) = ? AND YEAR(DateAdded) = ?";
         List<Object[]> patientDetails = new java.util.ArrayList<>();
 
         try (Connection conn = DriverManager.getConnection(DB_URL, DB_USERNAME, DB_PASSWORD);
@@ -83,7 +83,7 @@ public class PatientVisitReport {
                 Object[] row = {
                         rs.getString("Name"),
                         rs.getInt("Age"),
-                        rs.getString("Address"),
+                        rs.getString("Email"),
                         rs.getString("Contact"),
                         rs.getDate("DateAdded")
                 };
@@ -97,6 +97,7 @@ public class PatientVisitReport {
     }
 
     public JPanel getMainPanel() {
+
         return Main;
     }
 }

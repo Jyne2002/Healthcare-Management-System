@@ -6,7 +6,7 @@ import java.util.List;
 
 public class PatientDAO {
     public void addPatient(Patient patient) throws SQLException {
-        String query = "INSERT INTO patient_records (Name, Age, Gender, Contact, Address, VisitDate) VALUES (?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO patient_records (Name, Age, Gender, Contact, Email, VisitDate) VALUES (?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -14,14 +14,14 @@ public class PatientDAO {
             stmt.setInt(2, patient.getAge());
             stmt.setInt(3, patient.getGender());
             stmt.setString(4, patient.getContact());
-            stmt.setString(5, patient.getAddress());
+            stmt.setString(5, patient.getEmail());
             stmt.setString(6, patient.getVisitDate());
             stmt.executeUpdate();
         }
     }
 
     public void updatePatient(Patient patient) throws SQLException {
-        String query = "UPDATE patient_records SET Name=?, Age=?, Gender=?, Contact=?, Address=?, VisitDate=? WHERE id=?";
+        String query = "UPDATE patient_records SET Name=?, Age=?, Gender=?, Contact=?, Email=?, VisitDate=? WHERE id=?";
 
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -29,7 +29,7 @@ public class PatientDAO {
             stmt.setInt(2, patient.getAge());
             stmt.setInt(3, patient.getGender());
             stmt.setString(4, patient.getContact());
-            stmt.setString(5, patient.getAddress());
+            stmt.setString(5, patient.getEmail());
             stmt.setString(6, patient.getVisitDate());
             stmt.setInt(7, patient.getId());
             stmt.executeUpdate();
@@ -61,7 +61,7 @@ public class PatientDAO {
                         rs.getInt("Age"),
                         rs.getInt("Gender"),
                         rs.getString("Contact"),
-                        rs.getString("Address"),
+                        rs.getString("Email"),
                         rs.getString("VisitDate")
                 ));
             }

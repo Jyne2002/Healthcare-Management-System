@@ -93,11 +93,21 @@ public class Home extends javax.swing.JFrame {
         NotiPatientBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         NotiPatientBtn.setForeground(new java.awt.Color(255, 255, 255));
         NotiPatientBtn.setText("Notify Patients");
+        NotiPatientBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NotiPatientBtnActionPerformed(evt);
+            }
+        });
 
         NotiPharmacistsBtn.setBackground(new java.awt.Color(0, 103, 206));
         NotiPharmacistsBtn.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         NotiPharmacistsBtn.setForeground(new java.awt.Color(255, 255, 255));
         NotiPharmacistsBtn.setText("Notify Pharmacists");
+        NotiPharmacistsBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NotiPharmacistsBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout FooterTxtLayout = new javax.swing.GroupLayout(FooterTxt);
         FooterTxt.setLayout(FooterTxtLayout);
@@ -232,6 +242,22 @@ public class Home extends javax.swing.JFrame {
         // Or you can dispose of it to free up resources
         // this.dispose();
     }//GEN-LAST:event_DoctorBtnActionPerformed
+    private void NotiPharmacistsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoctorBtnActionPerformed
+        // Create an instance of LowStockNotificationView
+        LowStockNotificationView lowStockNotificationView = new LowStockNotificationView();
+
+        // Make the LowStockNotificationView visible
+        lowStockNotificationView.setVisible(true);
+    }//GEN-LAST:event_DoctorBtnActionPerformed
+    private void  NotiPatientBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoctorBtnActionPerformed
+        // Create an instance of LowStockNotificationView
+        AppointmentViewer AppointmentV = new AppointmentViewer(1);
+
+        // Make the LowStockNotificationView visible
+        AppointmentV.setVisible(true);
+
+        this.setVisible(false);
+    }//GEN-LAST:event_DoctorBtnActionPerformed
 
     private void ReportsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoctorBtnActionPerformed
         // Create an instance of DoctorView
@@ -253,7 +279,7 @@ public class Home extends javax.swing.JFrame {
         app.setVisible(true);
 
         // Optionally close the current window (Home)
-        this.setVisible(true); // This hides the current window
+        this.setVisible(false); // This hides the current window
         // Or you can dispose of it to free up resources
         // this.dispose();
     }//GEN-LAST:event_DoctorBtnActionPerformed
@@ -270,11 +296,12 @@ public class Home extends javax.swing.JFrame {
                 patientMain.main(new String[0]);
 
                 // Optionally close the current window (Home)
-                Home.this.setVisible(true); // This hides the current window
+                Home.this.setVisible(false); // This hides the current window
                 // Or you can dispose of it to free up resources
                 // Home.this.dispose();
             }
         });
+
     }
     /**
      * @param args the command line arguments

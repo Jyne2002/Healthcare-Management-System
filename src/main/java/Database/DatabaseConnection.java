@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class DatabaseConnection {
-    public static final String DB_URL = "jdbc:mysql://localhost:3306/medicare_plus";
+    public static final String DB_URL = "jdbc:mysql://localhost:3306/medicare_plus?useSSL=false";
     public static final String DB_USER = "root"; // Replace with your username
     public static final String DB_PASSWORD = ""; // Replace with your password
 

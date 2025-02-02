@@ -11,7 +11,7 @@ public class PatientVisitModel {
 
 
     public List<Object[]> getPatientDetails(int month, int year) {
-        String query = "SELECT Name, Age, Address, Contact, DateAdded FROM patient_records WHERE MONTH(DateAdded) = ? AND YEAR(DateAdded) = ?";
+        String query = "SELECT Name, Age, email, Contact, DateAdded FROM patient_records WHERE MONTH(DateAdded) = ? AND YEAR(DateAdded) = ?";
         List<Object[]> patientDetails = new ArrayList<>();
 
         try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
@@ -25,7 +25,7 @@ public class PatientVisitModel {
                 Object[] row = {
                         rs.getString("Name"),
                         rs.getInt("Age"),
-                        rs.getString("Address"),
+                        rs.getString("Email"),
                         rs.getString("Contact"),
                         rs.getDate("DateAdded")
                 };

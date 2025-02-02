@@ -1,10 +1,12 @@
 package View;
+import Home.Home;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class PatientView extends JFrame {
-    public JTextField nameField, ageField, genderField, contactField, addressField, visitDateField;
-    public JButton addButton, updateButton, deleteButton;
+    public JTextField nameField, ageField, genderField, contactField, emailField, visitDateField;
+    public JButton addButton, updateButton, deleteButton,backButton;
     public JTable patientTable;
 
     public PatientView() {
@@ -30,9 +32,9 @@ public class PatientView extends JFrame {
         contactField = new JTextField();
         panel.add(contactField);
 
-        panel.add(new JLabel("Address:"));
-        addressField = new JTextField();
-        panel.add(addressField);
+        panel.add(new JLabel("Email:"));
+        emailField = new JTextField();
+        panel.add(emailField);
 
         panel.add(new JLabel("Visit Date (YYYY-MM-DD):"));
         visitDateField = new JTextField();
@@ -41,15 +43,23 @@ public class PatientView extends JFrame {
         addButton = new JButton("Add");
         updateButton = new JButton("Update");
         deleteButton = new JButton("Delete");
+        backButton = new JButton("Back");
+        backButton.addActionListener(e -> backButton());
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(addButton);
         buttonPanel.add(updateButton);
         buttonPanel.add(deleteButton);
+        buttonPanel.add( backButton);
 
         patientTable = new JTable();
         add(panel, BorderLayout.NORTH);
         add(new JScrollPane(patientTable), BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
+    }
+    public void backButton() {
+        this.dispose(); // Close the current window
+        Home home = new Home(); // Create an instance of Home
+        home.setVisible(true); // Show Home window
     }
 }
