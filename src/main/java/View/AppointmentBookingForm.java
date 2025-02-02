@@ -1,6 +1,8 @@
 package View;
 
 import Database.DatabaseConnection;
+import Home.Home;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,6 +12,7 @@ import java.sql.*;
 public class AppointmentBookingForm extends JFrame {
     private JTextField tfFees, tfDate, tfTime;
     private JButton btnBookAppointment;
+    private JButton  backbtn;
     private JComboBox<String> cbDoctorName, cbPatientName;
     private JPanel formPanel; // Panel for the form
     private JProgressBar progressBar;
@@ -70,6 +73,8 @@ public class AppointmentBookingForm extends JFrame {
         // Book Appointment button with icon
         btnBookAppointment = createButton("Book Appointment", "book_icon.png");
 
+        backbtn = createButton("Back", "book_icon.png");
+
         // Progress bar for loading data
         progressBar = new JProgressBar();
         progressBar.setIndeterminate(true);
@@ -100,9 +105,17 @@ public class AppointmentBookingForm extends JFrame {
         formPanel.add(btnBookAppointment);
         formPanel.add(Box.createVerticalStrut(20));
 
+        formPanel.add( backbtn );
+        formPanel.add(Box.createVerticalStrut(20));
+        backbtn.addActionListener(e -> backbtn());
+
         formPanel.add(progressBar);
     }
-
+    private void backbtn() {
+        this.dispose(); // Close the current window
+        Home home = new Home(); // Create an instance of Home
+        home.setVisible(true); // Show Home window
+    }
     // Method to create labels with custom styles
     private JLabel createLabel(String text) {
         JLabel label = new JLabel(text);

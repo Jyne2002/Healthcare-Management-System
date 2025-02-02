@@ -6,7 +6,7 @@ public class Patient {
     private int age;
     private int gender;
     private String contact;
-    private String address;
+    private String Email;
     private String visitDate;
 
     public Patient(int id, String name, int age, int gender, String contact, String address, String visitDate) {
@@ -15,7 +15,7 @@ public class Patient {
         this.age = age;
         this.gender = gender;
         this.contact = contact;
-        this.address = address;
+        this.Email = address;
         this.visitDate = visitDate;
     }
 
@@ -24,6 +24,9 @@ public class Patient {
     public int getAge() { return age; }
     public int getGender() { return gender; }
     public String getContact() { return contact; }
-    public String getAddress() { return address; }
+    public String getAddress() { return Email; }
     public String getVisitDate() { return visitDate; }
+    public String getEmail() {
+        return Email;
+    }
 }

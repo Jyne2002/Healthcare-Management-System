@@ -2,6 +2,7 @@ package View;
 import Model.Doctor;
 import Controller.DoctorController;
 import Home.Home;
+import main.PatientMain;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
@@ -161,13 +162,23 @@ public class Doctorview extends javax.swing.JFrame {
         jLabel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         HomeBtn.setBackground(new java.awt.Color(255, 255, 102));
-        HomeBtn.setText("jButton1");
+        HomeBtn.setText("Appointment");
+        HomeBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AppoinmentBtnActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(255, 255, 102));
-        jButton2.setText("jButton1");
+        jButton2.setText("Doctor");
 
         jButton3.setBackground(new java.awt.Color(255, 255, 102));
-        jButton3.setText("jButton1");
+        jButton3.setText("pharmacy");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PharmacyBtnActionPerformed(evt);
+            }
+        });
 
         Home.setBackground(new java.awt.Color(255, 255, 102));
         Home.setText("Home");
@@ -178,16 +189,36 @@ public class Doctorview extends javax.swing.JFrame {
         });
 
         jButton5.setBackground(new java.awt.Color(255, 255, 102));
-        jButton5.setText("jButton1");
+        jButton5.setText("Reports");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ReportsBtnActionPerformed(evt);
+            }
+        });
 
         jButton6.setBackground(new java.awt.Color(255, 255, 102));
-        jButton6.setText("jButton1");
+        jButton6.setText("patient");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PatientBtnActionPerformed(evt);
+            }
+        });
 
         jButton7.setBackground(new java.awt.Color(255, 255, 102));
-        jButton7.setText("jButton1");
+        jButton7.setText("Notify pharmacists");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NotiPharmacistsBtnActionPerformed(evt);
+            }
+        });
 
         jButton8.setBackground(new java.awt.Color(255, 255, 102));
-        jButton8.setText("jButton1");
+        jButton8.setText("Notify Patient");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NotiPatientsBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -324,6 +355,81 @@ public class Doctorview extends javax.swing.JFrame {
         Home homeFrame = new Home();  // Make sure Home.java is properly defined
         homeFrame.setVisible(true);// TODO add your handling code here:
     }//GEN-LAST:event_HomeActionPerformed
+    private void PatientMainActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeActionPerformed
+        // Close the current window (PharmacyView)
+        this.dispose();
+
+        // Create and show the Home window
+        PatientMain Patient = new PatientMain();  // Make sure Home.java is properly defined
+        Patient.setVisible(true);// TODO add your handling code here:
+    }//GEN-LAST:event_HomeActionPerformed
+    private void PharmacyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeActionPerformed
+        // Create an instance of PharmacyView
+        PharmacyView pharmacyView = new PharmacyView();
+
+        // Set PharmacyView visible
+        pharmacyView.setVisible(true);
+
+        // Optionally close the current window (Home)
+        this.setVisible(false); // This hides the current window
+        // Or you can dispose it to free up resources
+        // this.dispose();
+    }//GEN-LAST:event_PharmacyBtnActionPerformed
+    private void PatientBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeActionPerformed
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                // Create an instance of PatientMain
+                PatientMain patientMain = new PatientMain();
+
+                // Call the main method to display the PatientView
+                patientMain.main(new String[0]);
+
+                // Optionally close the current window (Home)
+
+                // Or you can dispose of it to free up resources
+                // Home.this.dispose();
+            }
+        });
+    }//GEN-LAST:event_PharmacyBtnActionPerformed
+    private void  AppoinmentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeActionPerformed
+        // Create an instance of DoctorView
+        AppointmentBookingForm app = new AppointmentBookingForm();
+
+        // Set DoctorView visible
+        app.setVisible(true);
+
+        // Optionally close the current window (Home)
+        this.setVisible(true); // This hides the current window
+        // Or you can dispose of it to free up resources
+        // this.dispose();
+    }//GEN-LAST:event_PharmacyBtnActionPerformed
+    private void   ReportsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeActionPerformed
+        // Create an instance of DoctorView
+        MainUI mainui = new MainUI();
+
+        // Set DoctorView visible
+        mainui.setVisible(true);
+
+        // Optionally close the current window (Home)
+        this.setVisible(false); // This hides the current window
+        // Or you can dispose of it to free up resources
+        // this.dispose();//Hi
+    }//GEN-LAST:event_PharmacyBtnActionPerformed
+    private void   NotiPharmacistsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeActionPerformed
+        // Create an instance of LowStockNotificationView
+        LowStockNotificationView lowStockNotificationView = new LowStockNotificationView();
+
+        // Make the LowStockNotificationView visible
+        lowStockNotificationView.setVisible(true);
+    }//GEN-LAST:event_PharmacyBtnActionPerformed
+    private void   NotiPatientsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HomeActionPerformed
+        // Create an instance of LowStockNotificationView
+        AppointmentViewer AppointmentVi = new AppointmentViewer(1);
+
+        // Make the LowStockNotificationView visible
+        AppointmentVi.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_PharmacyBtnActionPerformed
 
     /**
      * @param args the command line arguments

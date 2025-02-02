@@ -25,7 +25,7 @@ public class PatientController {
                         Integer.parseInt(view.ageField.getText()),
                         Integer.parseInt(view.genderField.getText()),  // Added gender handling
                         view.contactField.getText(),
-                        view.addressField.getText(),
+                        view.emailField.getText(),
                         view.visitDateField.getText()
                 ));
                 JOptionPane.showMessageDialog(view, "Patient added successfully!");
@@ -48,7 +48,7 @@ public class PatientController {
                         view.ageField.getText().isEmpty() ||
                         view.genderField.getText().isEmpty() ||
                         view.contactField.getText().isEmpty() ||
-                        view.addressField.getText().isEmpty() ||
+                        view.emailField.getText().isEmpty() ||
                         view.visitDateField.getText().isEmpty()) {
                     JOptionPane.showMessageDialog(view, "Please fill in all fields to update the patient.");
                     return;
@@ -62,7 +62,7 @@ public class PatientController {
                             Integer.parseInt(view.ageField.getText()),
                             Integer.parseInt(view.genderField.getText()),
                             view.contactField.getText(),
-                            view.addressField.getText(),
+                            view.emailField.getText(),
                             view.visitDateField.getText()
                     );
 
@@ -114,7 +114,7 @@ public class PatientController {
                 view.ageField.setText(String.valueOf(view.patientTable.getValueAt(selectedRow, 2)));
                 view.genderField.setText(String.valueOf(view.patientTable.getValueAt(selectedRow, 3)));
                 view.contactField.setText((String) view.patientTable.getValueAt(selectedRow, 4));
-                view.addressField.setText((String) view.patientTable.getValueAt(selectedRow, 5));
+                view.emailField.setText((String) view.patientTable.getValueAt(selectedRow, 5));
                 view.visitDateField.setText((String) view.patientTable.getValueAt(selectedRow, 6));
             }
         });
@@ -122,7 +122,7 @@ public class PatientController {
 
     private void loadPatientData() throws SQLException {
         List<Patient> patients = dao.getAllPatients();
-        String[] columns = {"ID", "Name", "Age", "Gender", "Contact", "Address", "Visit Date"};
+        String[] columns = {"ID", "Name", "Age", "Gender", "Contact", "Email", "Visit Date"};
         DefaultTableModel tableModel = new DefaultTableModel(columns, 0);
 
         for (Patient p : patients) {
@@ -132,7 +132,7 @@ public class PatientController {
                     p.getAge(),
                     p.getGender() == 1 ? "Male" : "Female",
                     p.getContact(),
-                    p.getAddress(),
+                    p.getEmail(),
                     p.getVisitDate()
             });
         }
@@ -146,7 +146,7 @@ public class PatientController {
         view.ageField.setText("");
         view.genderField.setText("");
         view.contactField.setText("");
-        view.addressField.setText("");
+        view.emailField.setText("");
         view.visitDateField.setText("");
     }
 }

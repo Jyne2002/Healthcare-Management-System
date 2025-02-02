@@ -10,6 +10,9 @@ public class PatientMain {
         new PatientController(view, dao);
         view.setVisible(true);
     }
+
+    public void setVisible(boolean b) {
+    }
 //eifepgpdgn12355
 
 }
