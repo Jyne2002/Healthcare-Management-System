@@ -79,4 +79,31 @@ public class PharmacyController {
         }
         return inventory;
     }
+
+    // Fetch only low stock items (quantity < 5)
+    public List<PharmacyItem> getLowStockItems() {
+        List<PharmacyItem> lowStockItems = new ArrayList<>();
+        String query = "SELECT * FROM pharmacy_items WHERE quantity < 5";
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                PharmacyItem item = new PharmacyItem(
+                        rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getInt("quantity"),
+                        rs.getDouble("price"),
+                        rs.getString("expDate")
+                );
+                lowStockItems.add(item);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return lowStockItems;
+}
 }
