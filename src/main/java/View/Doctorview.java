@@ -3,7 +3,6 @@ import Model.Doctor;
 import Controller.DoctorController;
 import Home.Home;
 import main.PatientMain;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
@@ -213,7 +212,7 @@ public class Doctorview extends javax.swing.JFrame {
         });
 
         jButton8.setBackground(new java.awt.Color(255, 255, 102));
-        jButton8.setText("Booking details");
+        jButton8.setText("Booking Details");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 NotiPatientsBtnActionPerformed(evt);

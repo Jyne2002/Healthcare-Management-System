@@ -5,7 +5,7 @@ import View.stockreport;
 import Controller.StockReportController;
 import Model.ReportModel;
 
-public class InventoryMain extends JFrame {  // Extend JFrame to make it a standalone window
+public class InventoryMain extends JFrame {
     public InventoryMain() {
         // Initialize components
         stockreport view = new stockreport();
@@ -14,17 +14,17 @@ public class InventoryMain extends JFrame {  // Extend JFrame to make it a stand
 
         // Set up the JFrame
         setTitle("Stock Report Generator");
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);  // Use DISPOSE_ON_CLOSE to avoid closing the entire app
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setContentPane(view.getMainPanel());
         pack();
-        setLocationRelativeTo(null);  // Center the window on the screen
+        setLocationRelativeTo(null);
     }
 
     public static void main(String[] args) {
-        // Use SwingUtilities.invokeLater to ensure thread safety
+
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                new InventoryMain().setVisible(true);  // Create and show the InventoryMain window
+                new InventoryMain().setVisible(true);
             }
         });
     }

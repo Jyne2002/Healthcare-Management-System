@@ -13,7 +13,7 @@ public class PatientVisitReportController {
     public Object[][] getPatientDetailsForReport(int month, int year) {
         List<Object[]> patientDetails = model.getPatientDetails(month, year);
 
-        // Convert List<Object[]> to Object[][] for JTable
+        // Convert List to objectsss
         Object[][] data = new Object[patientDetails.size()][];
         for (int i = 0; i < patientDetails.size(); i++) {
             data[i] = patientDetails.get(i);

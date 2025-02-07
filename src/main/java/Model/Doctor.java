@@ -15,7 +15,7 @@ public class Doctor {
         this.doctorFee = doctorFee;
     }
 
-    // Constructor without ID for new entries
+
     public Doctor(String name, String specialization, String availability, double doctorFee) {
         this.name = name;
         this.specialization = specialization;
@@ -23,7 +23,7 @@ public class Doctor {
         this.doctorFee = doctorFee;
     }
 
-    // Getters and Setters
+
     public int getId() {
         return id;
     }

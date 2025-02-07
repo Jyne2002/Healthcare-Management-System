@@ -13,7 +13,7 @@ public class RevenueReportModel {
         StringBuilder report = new StringBuilder();
 
         try (Connection conn = DatabaseConnection.getConnection()) {
-            // Get total income from appointments
+
             String feesQuery = "SELECT SUM(fees) FROM appointment WHERE MONTH(appointment_date) = ? AND YEAR(appointment_date) = ?";
             try (PreparedStatement stmt = conn.prepareStatement(feesQuery)) {
                 stmt.setInt(1, month);
@@ -24,7 +24,7 @@ public class RevenueReportModel {
                 }
             }
 
-            // Get total outcome from pharmacy_items
+
             String expensesQuery = "SELECT SUM(price) FROM pharmacy_items WHERE MONTH(created_at) = ? AND YEAR(created_at) = ?";
             try (PreparedStatement stmt = conn.prepareStatement(expensesQuery)) {
                 stmt.setInt(1, month);
@@ -35,15 +35,15 @@ public class RevenueReportModel {
                 }
             }
 
-            // Calculate revenue
+
             revenue = totalFees - totalExpenses;
 
-            // Construct the detailed report
+
             report.append("Total Income (Appointments): Rs :").append(totalFees).append("\n");
             report.append("Total Outcome (Pharmacy Items): Rs :").append(totalExpenses).append("\n");
             report.append("Revenue: Rs : ").append(revenue).append("\n");
 
-            // Optionally, add some rate calculations
+
             double incomeRate = (totalFees > 0) ? (revenue / totalFees) * 100 : 0;
             double expenseRate = (totalExpenses > 0) ? (totalExpenses / (totalFees + totalExpenses)) * 100 : 0;
 

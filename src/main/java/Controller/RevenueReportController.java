@@ -15,7 +15,7 @@ public class RevenueReportController {
         this.view = view;
         this.model = model;
 
-        // Attach event listener to the button
+        //control button
         view.getGenerateButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -28,7 +28,7 @@ public class RevenueReportController {
         int month = view.getDropDmonth().getSelectedIndex() + 1;  // Get month index (1-12)
         int year = Integer.parseInt((String) view.getDropDyear().getSelectedItem());
 
-        // Get detailed report from the model
+        // fetching from model
         String detailedReport = model.calculateMonthlyRevenue(month, year);
         view.getTextArea().setText(detailedReport);  // Display the detailed report in the JTextArea
     }

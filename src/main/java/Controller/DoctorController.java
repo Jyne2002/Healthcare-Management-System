@@ -2,14 +2,13 @@ package Controller;
 
 import Model.Doctor;
 import Database.DatabaseConnection;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DoctorController {
 
-    // Fetch all doctors
+
     public List<Doctor> getDoctors() {
         List<Doctor> doctors = new ArrayList<>();
         try (Connection conn = DatabaseConnection.getConnection();
@@ -31,7 +30,7 @@ public class DoctorController {
         return doctors;
     }
 
-    // Add a doctor with a specific ID
+
     public void addDoctor(Doctor doctor) {
         String query = "INSERT INTO doctors (id, name, specialization, availability, doctor_fee) VALUES (?, ?, ?, ?, ?)";
         try (Connection conn = DatabaseConnection.getConnection();
@@ -48,7 +47,7 @@ public class DoctorController {
         }
     }
 
-    // Update a doctor's details
+
     public void updateDoctor(int id, Doctor doctor) {
         String query = "UPDATE doctors SET name = ?, specialization = ?, availability = ?, doctor_fee = ? WHERE id = ?";
         try (Connection conn = DatabaseConnection.getConnection();
@@ -65,7 +64,7 @@ public class DoctorController {
         }
     }
 
-    // Remove a doctor by ID
+
     public void removeDoctor(int id) {
         String query = "DELETE FROM doctors WHERE id = ?";
         try (Connection conn = DatabaseConnection.getConnection();

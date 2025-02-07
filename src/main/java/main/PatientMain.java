@@ -13,6 +13,6 @@ public class PatientMain {
 
     public void setVisible(boolean b) {
     }
-//eifepgpdgn12355
+
 
 }

@@ -16,7 +16,7 @@ public class StockReportController {
         this.view = view;
         this.model = model;
 
-        // Add listener for generate button
+        //control the button
         this.view.addGenerateButtonListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -29,7 +29,7 @@ public class StockReportController {
         String startDate = view.getStartDate();
         String endDate = view.getEndDate();
 
-        // Validate the date inputs
+        // Validation
         try {
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
             sdf.setLenient(false); // Enforce strict date parsing
@@ -37,16 +37,16 @@ public class StockReportController {
             sdf.parse(startDate);
             sdf.parse(endDate);
 
-            // Fetch report data from the model
+            // Fetching from the model
             List<Object[]> reportData = model.getReportData(startDate, endDate);
 
-            // If there is no data, show an empty message
+            // validation
             if (reportData.isEmpty()) {
                 view.showMessage("No records found for the given date range.");
                 return;
             }
 
-            // Convert the list to a table model and update the JTable
+            // updating table outputs
             DefaultTableModel tableModel = new DefaultTableModel(
                     reportData.toArray(new Object[0][]),
                     new String[]{"Name", "Quantity", "Price", "Expiration Date"}

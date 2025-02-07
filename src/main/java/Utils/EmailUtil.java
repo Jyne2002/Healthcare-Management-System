@@ -54,6 +54,6 @@ public class EmailUtil {
 
         } catch (MessagingException e) {
             throw new RuntimeException(e);
-        }
-    }
+ }
+}
 }

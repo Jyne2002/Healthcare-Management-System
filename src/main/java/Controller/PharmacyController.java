@@ -80,7 +80,7 @@ public class PharmacyController {
         return inventory;
     }
 
-    // Fetch only low stock items (quantity < 5)
+
     public List<PharmacyItem> getLowStockItems() {
         List<PharmacyItem> lowStockItems = new ArrayList<>();
         String query = "SELECT * FROM pharmacy_items WHERE quantity < 5";
